@@ -13,6 +13,24 @@
         <input type="number" name="age" placeholder="age">
         <input type="submit">
     </form>
+
+    <h1>Drivers list</h1>
+
+    <ul id="drivers"></ul>
+
+
+    <script>
+        async function getDrivers(){
+            const result = await fetch('/drivers');
+            const drivers = await result.json();
+
+            const driversSTR = drivers.map(({name}) => `<li>${name}<li>`).join('');
+            document.querySelector("#drivers").innerHTML = driversSTR;          
+        }
+
+        getDrivers();
+
+    </script>
        
                                
 </body>
